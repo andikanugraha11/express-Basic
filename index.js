@@ -15,6 +15,16 @@ app.post('/hello', (req,res)=>{
 	res.send('dari post Routing hello');
 });
 
+//URL Building
+app.get('/user/:id([0-9])/:nama', function(req,res){
+	res.send('Selamat datang : ' + req.params.nama + '<br/> ID anda adalah : ' + req.params.id);
+});
+
+//404
+app.get('*',function(req,res){
+	res.send("404 Halaman tidak ditemukan");
+});
 app.listen(3000 , function(){
 	console.log('running');
 });
+
