@@ -1,10 +1,19 @@
 var express		= require('express');
 var app			= express();
 var dikaRoute	= require('./dikaRoute');
+var path		= require('path');
+
+app.set('view engine', 'pug');
+app.set('views','./views');
+
+// app.use(express.static(path.join(__dirname,'assets')));
+app.use('/folder', express.static(path.join(__dirname,'assets')));
 
 //Localhost:3000/dikaRoute/
 app.use('/dikaRoute', dikaRoute);
-
+app.get('/testview', function(req,res){
+	res.render('index',{judul:'coba'});
+});
 //Routing
 //Localhost:3000/
 app.get('/hello', (req,res)=>{
